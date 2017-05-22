@@ -1,0 +1,15 @@
+﻿.form-control{
+  margin: 5px;
+}
+
+#edit-form{
+  margin: 30px 20%;
+}
+
+.ng-invalid {
+  background-color: pink;
+}
+
+.ng-valid {
+  background-color: lightgreen;
+}

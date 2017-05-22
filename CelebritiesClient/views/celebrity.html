@@ -1,0 +1,39 @@
+﻿<div>
+  <h1 class="text-center text-uppercase">Celebrities App</h1>
+  <button class="btn btn-success center-block" ng-click="creating = true" ng-hide="creating">Create new Celebrity</button>
+  <div id="edit-form" >
+    <form ng-show="creating" ng-submit="creating = false; addCelebrity()">
+      <input class="form-control" type="text" placeholder="Full Name" ng-model="newCelebrity.celebrityName" required />
+      <input class="form-control" type="number" placeholder="Age" ng-model="newCelebrity.celebrityAge" required />
+      <select class="form-control" ng-model="newCelebrity.celebrityCountry">
+        <option ng-repeat="country in countries" value="{{country.name}}">{{country.name}}</option>
+      </select>
+      <div class="pull-right">
+        <button class="btn btn-danger	" ng-click="creating = false">Cancel</button>
+        <input class="btn btn-success" type="submit" value="Submit" />
+      </div>
+    </form>
+  </div>
+    <div ng-repeat="celeb in celebrities" class="list-group-item">
+      <div ng-hide="editing">
+        <h3>{{celeb.celebrityName}}</h3>
+        <h4>{{celeb.celebrityAge}}</h4>
+        <p>{{celeb.celebrityCountry}}</p>
+        <button class="btn btn-warning" ng-click="editing = true">Edit</button>
+        <button class="btn btn-danger" ng-click="deleteCelebrity(celeb.id)">Delete</button>
+      </div>
+      <form ng-show="editing" ng-submit="editing = false; editCelebrity(celeb)">
+        <label>Name:</label>
+        <input type="text" class="form-control" ng-model="celeb.celebrityName" placeholder="Name" required />
+        <label>Age:</label>
+        <input type="number" class="form-control" ng-model="celeb.celebrityAge" placeholder="Date" required />
+        <label>Country:</label>
+        <select class="form-control" ng-model="celeb.celebrityCountry">
+          <option ng-repeat="country in countries" value="{{country.name}}">{{country.name}}</option>
+        </select>
+        <br />
+        <button class="btn" type="submit">Save</button>
+      </form>
+      
+    </div>
+</div>
